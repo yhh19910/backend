@@ -1,43 +1,36 @@
 package com.lwdevelop.backend.Model;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CommentId;
-    
+    @NonNull
     private String Content;
-    
-    private String CreatedAt;
-
-    public Long getCommentId() {
-        return CommentId;
-    }
-
-    public void setCommentId(Long CommentId) {
-        this.CommentId = CommentId;
-    }
-
-
-    public String getContent() {
-        return Content;
-    }
-
-    public void setContent(String Content) {
-        this.Content = Content;
-    }
-
-    public String getCreatedAt() {
-        return CreatedAt;
-    }
-
-    public void setCreatedAt(String CreatedAt) {
-        this.CreatedAt = CreatedAt;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @NonNull
+    private Member member;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    @NonNull
+    private Post post;
+    private Date createTime; 
 }
