@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.lwdevelop.backend.Model.Member;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, String> {
+public interface MemberRepository extends JpaRepository<Member, Long> {
 
 }

@@ -1,6 +1,8 @@
 package com.lwdevelop.backend.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,8 @@ import lombok.RequiredArgsConstructor;
 public class Member {
 
     @Id
-    private String mid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long mid;
     @NonNull
     private String email;
     @NonNull private String password;
