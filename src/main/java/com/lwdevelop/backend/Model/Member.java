@@ -1,29 +1,43 @@
 package com.lwdevelop.backend.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import jakarta.validation.constraints.NotEmpty;
 
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
+@Table(name = "members")
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "mid", unique = true, nullable = false, length = 50)
     private Long mid;
     @NonNull
+    @NotEmpty
+	@Column(name = "email", unique = true, nullable = false, length = 50)
     private String email;
-    @NonNull private String password;
+    @NotEmpty
+	@Column(name = "password", nullable = false, length = 50)
+    @NonNull 
+    private String password;
     @NonNull
+    @NotEmpty
+	@Column(name = "name", nullable = false, length = 50)
     private String Name;
     @NonNull
+    @NotEmpty
+	@Column(name = "biography", nullable = false, length = 50)
     private String Biography;
 }
 
